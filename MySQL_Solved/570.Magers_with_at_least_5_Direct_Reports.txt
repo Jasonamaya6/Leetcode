@@ -1,0 +1,17 @@
+#First we want to query all of the names that have a manager count of atleast 5 (>=5) so we select name only.
+SELECT e.name 
+
+#The only table here is Employee so from Employee and we made a alias (e) in order to join the table together to check if the manger to id checkout
+FROM Employee e
+
+#This is where we begin the join of the same table and again we make an alias on the same table (e1)
+JOIN Employee e1 
+
+#We are checking if the id and managerId match up to check the count
+ON e.id = e1.managerId 
+
+#Now we group the managerId because we will use an aggragate function in order to check the amount mangers counts on in the matched up id and mangerId
+GROUP e1.managerId
+
+#For this we use the having clause in order to check the count and this will output the name that has 5 managers count.
+HAVING COUNT(e1.managerId) >= 5
