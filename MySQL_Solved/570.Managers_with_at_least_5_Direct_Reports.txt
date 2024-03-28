@@ -1,3 +1,5 @@
+# 3/26/2024 - Jason Amaya
+
 #First we want to query all of the names that have a manager count of atleast 5 (>=5) so we select name only.
 SELECT e.name 
 
