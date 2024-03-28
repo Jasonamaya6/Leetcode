@@ -1,0 +1,30 @@
+#Main thing to know here is to stay organized!!!!
+#Make alias's in the necessary queries
+# 3/27/2024 - Jason Amaya
+
+
+SELECT 
+    #Firstly, it is asking for a query where it will show the year & month so the function date_formate will help output just that.
+    DATE_FORMAT(trans_date, '%Y-%m') AS month, 
+
+    #Next we want to output the countries which this is simple, we got to keep in mind the diffrent countries in diffrent months.
+    country,
+
+    #Now we are checking how many transaction where done again this is going to be group by the month which is stated at the bottom.
+    COUNT(*) AS trans_count, 
+
+    #Now here is where I used the case format, we are count if where the state = aprroved then adding them all up in groups of year and month and country (COUNT() can also be used just need to change 0 to NULL).
+    SUM(CASE WHEN state = 'approved' THEN 1 ELSE 0 end ) AS approved_count, 
+
+    #Now we sum up all the transaction no matter approved or declined still group by year and month/country.
+    SUM(amount) AS trans_total_amount, 
+
+    #Now we sum up the amount only where state is approved.
+    SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 end) AS approved_total_amount
+
+
+#Only checking in 1 table no need for joining anything so simply (Tranactions).
+FROM Transactions
+
+#Now this is the important part!! Group it by the year and month and then the country so all the aggreation reads it by these rules.
+GROUP BY DATE_FORMAT(trans_date, '%Y-%m'), country
