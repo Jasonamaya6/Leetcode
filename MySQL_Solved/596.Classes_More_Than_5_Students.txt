@@ -1,0 +1,15 @@
+# 3/31/24 Jason Amaya
+
+# Simple query, this one wants us to select just the class
+SELECT class
+
+
+#from the table Courses 
+FROM Courses
+
+
+#We group the query by class
+GROUP BY class
+
+#finally we use the having key to check witch classes has  5 or more students
+HAVING COUNT(DISTINCT student) >= 5
