@@ -1,0 +1,15 @@
+# 3/31/24 Jason Amaya
+
+# first we want to select the day and then we want to count the number of diffrent user_id for each group of records with the same activity_date
+SELECT 
+    activity_date AS day,
+    COUNT(DISTINCT user_id) AS active_users
+
+#The table we are achieving the data.
+FROM Activity 
+
+# So so this makes sure we are getting the results from the last 30 days 
+WHERE activity_date BETWEEN '2019-06-28' AND '2019-07-27'
+
+# this makes sure we are looking at it by day and in the select column it counts the diffrent users in the day.
+GROUP BY activity_date
