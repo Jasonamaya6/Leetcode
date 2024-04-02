@@ -1,0 +1,23 @@
+# 4/2/24 Jason Amaya
+
+# Hard to comprehen however it makes sense when breaking it down.
+
+
+# We want to select the max salary right now however in the where clause we are going to meet this condition because this max(salary only returns one number) 
+SELECT MAX(salary) AS SecondHighestSalary 
+
+#We are selecting it from the employees table
+FROM employee 
+
+#Now here is where we set the selected salary less then the subquery of the max of the column 
+WHERE salary < (SELECT MAX(salary) FROM employee);
+
+
+
+# Suppose we have a set of { 100, 200, 300 } 
+
+# Select max(salary) = 300 curently
+
+# However after we set the where condition we are filtering all the val;ues that are less then 300 which is {100, 200}
+
+#However back to the SELECT MAX(salary) the new max is 200 and selects that as the output. 
