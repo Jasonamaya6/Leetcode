@@ -1,0 +1,21 @@
+#  4/5/24  Jason Amaya
+
+#We want to select all the columns from the table so '*'
+SELECT * 
+
+#From the table Users
+FROM Users
+
+
+#Where the mail column matches the specified regular expression pattern 
+WHERE mail REGEXP '^[a-zA-Z][a-zA-Z0-9_.-]*@leetcode[.]com$'
+
+# The '^' asserts the start of the string 
+
+# The '[a-zA-Z]' matches a single letter (Whether it is upper or lower case)
+
+# The '[a-zA-Z0-9_.-]*' matches zero or more letters, digits, underscores, dots, or hyphens
+
+# The '@leetcode[.]com' natches the literal string 
+
+# The '$' asserts the end of the string 
