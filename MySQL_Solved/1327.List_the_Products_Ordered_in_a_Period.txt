@@ -1,0 +1,23 @@
+# 4/5/24  Jason Amaya
+
+
+# We want to select all the products and units amount from separate table which is why the p. and o. are included
+SELECT p.product_name, sum(o.unit) AS unit
+
+# In this table we make an alias with p 
+FROM Products p 
+
+# We want to merge the two tables so we join it with orders table and also make an alias
+JOIN Orders o 
+
+# Here we check if the ids are the same and then it will proceed
+ON p.product_id = o.product_id
+
+# We use the Where clause to check the dates and in the desciption it say we are looking for dates in febuary 2020 only
+WHERE o.order_date BETWEEN '2020-02-01' AND '2020-02-29'
+
+# After we group the product_id in the Orders table so we can can check the amount 
+GROUP BY o.product_id 
+
+#Finally we use the SUM function to check if the sum of the units are greater then 99 which is what the description is asking.
+HAVING sum(o.unit) >= 100 
