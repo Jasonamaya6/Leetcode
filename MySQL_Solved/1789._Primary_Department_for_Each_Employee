@@ -1,0 +1,18 @@
+# 4/9/24  JasonAmaya
+
+
+#Selecting the two ids 
+SELECT employee_id, department_id
+
+#From the employee's table
+FROM Employee
+
+#This is where you check if the flag is Y or N which determines whether or not the 
+#if that id is the primary so we check if the value = to Y 
+# However some don't have a Y and only have one value which is equal to N 
+WHERE primary_flag = "Y" or employee_id IN (
+    SELECT employee_id
+    FROM Employee 
+    group by employee_id
+    having count(employee_id) = 1
+) # Here is where we make a subquery to check if the count of the employee id is one which thsi would be the Primary.
