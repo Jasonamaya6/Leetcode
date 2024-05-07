@@ -1,0 +1,21 @@
+# 5/7/2024 Jason Amaya
+
+SELECT customer_id
+
+FROM Customer 
+
+GROUP BY customer_id # Group the putput by the id of the cusomter_d
+
+HAVING COUNT(DISTINCT product_key) = (SELECT COUNT(*) FROM Product)
+
+# The HAVING clause filters the grouped rows based on a condition 
+# after the grouping has been performed.
+
+# COUNT(DISTINCT product_key) calculates the number 
+# of distinct product keys for each customer.
+
+# ()SELECT COUNT(*) FROM Product) calculates the total number 
+# of products in the Product table.
+
+# The HAVING clause ensures that only rows where the count 
+# of distinct product keys for a customer is equal to the total number of products in the Product table are included in the result set.
