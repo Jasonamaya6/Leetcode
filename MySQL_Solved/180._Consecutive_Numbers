@@ -1,0 +1,19 @@
+# May 22, 2024 Jason Amaya
+
+# Find the numbers that appear consecutively 3 times in a row and ouput it.
+
+# We want select the rows that the number will appear however we want to 
+# only just ditsinct one number not all of the occurences whish is why DISTINCT is there.
+SELECT DISTINCT l1.num as consecutiveNums 
+
+# We want to initialize the begining occurance of the number and from there check 
+# the next two spots if their the same, so Log l1 is the esstinally the head.
+FROM Logs l1
+
+# Here we join the l1 id is = to the l2.id from a +1 postion.
+JOIN Logs l2 ON l1.id = l2.id + 1
+# Here we do the same operation but for this time from +2 postions meaning its 3rd occurance.
+JOIN Logs l3 ON l1.id = l3.id + 2
+
+# Now we want to ouput only where the numbers where their equal to eachother.
+WHERE l1.num = l2.num AND l2.num = l3.num
