@@ -1,0 +1,19 @@
+# May 24, 2024 Jason Amaya
+
+# Retrieve all the id and based on their decimal score rank them in from 1st to last.
+
+# First we want to output the score
+SELECT 
+    score, 
+    # Here is where i did some digging and found this aggregate clause that ranks the numbers for me.
+    DENSE_RANK() OVER (ORDER BY score DESC) AS 'rank'
+# From here is simple we get it from the only table which is Scores.
+FROM 
+    Scores
+
+# Finally we order it by their scores in DESC order.
+ORDER BY 
+    score DESC;
+
+
+
