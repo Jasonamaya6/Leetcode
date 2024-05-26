@@ -1,0 +1,23 @@
+# May 25, 2024 Jason Amaya
+
+# Find employees who have the highest salary in each department.
+
+
+# First we want to retrieve these column with an alias name for them
+SELECT d.name as Department, e.name as Employee, e.salary as Salary
+
+# From the Employees table and setting e as the alias
+FROM Employee e
+
+# We want to JOIN on the department table to check which rows match with eachother
+JOIN Department d 
+
+# We locate the id for department and departmentId from Employee table to check the eact Department the person is in
+ON e.departmentId = d.id 
+
+# We use the clause where to find the diffrent departmentId and salaray 
+WHERE (e.departmentId, e.salary) 
+
+# We use the IN to get approach the Subquery where it retrieves the departmentId and Max Salary.
+IN (SELECT departmentId, MAX(salary) FROM Employee GROUP BY departmentId)
+
