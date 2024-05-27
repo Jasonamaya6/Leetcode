@@ -1,0 +1,17 @@
+# May 27, 2024  Jason Amaya
+
+# We want to select the customer number
+SELECT customer_number
+
+# From the only table which is Orders
+FROM Orders 
+
+# We want to group it by the customer_number in order to count whihc has the highest
+GROUP BY customer_number 
+
+# Then we order it by the Count function in order to count each and we put it in desc order from greatest to least
+ORDER BY COUNT(customer_number) desc
+
+# So after we limit the output to just 1 so we only see the highest count. 
+LIMIT 1
+
