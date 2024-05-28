@@ -1,0 +1,25 @@
+# May 28, 2024  Jason Amaya
+
+-- Select the id and count the number of occurrences as num
+SELECT id, COUNT(*) AS num 
+FROM (
+    -- Select requester_id from the RequestAccepted table and alias it as id
+    SELECT requester_id AS id 
+    FROM RequestAccepted
+    
+    -- Combine the results with another select query using UNION ALL
+    UNION ALL
+    
+    -- Select accepter_id from the RequestAccepted table and alias it as num
+    SELECT accepter_id AS id 
+    FROM RequestAccepted
+) a -- Alias the combined result set as 'a'
+
+-- Group the combined result set by id
+GROUP BY id 
+
+-- Order the grouped result set by the count of occurrences in descending order
+ORDER BY num DESC 
+
+-- Limit the result to the top 1 row
+LIMIT 1
