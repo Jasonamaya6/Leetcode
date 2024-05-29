@@ -1,0 +1,14 @@
+-- Select the name of customers
+SELECT c.name as Customers 
+
+-- From the Customers table with an alias 'c'
+FROM Customers c
+
+-- Perform a LEFT JOIN with the Orders table, alias it as 'o'
+LEFT JOIN Orders o 
+
+-- Join the tables on the condition that the customerId in Orders matches the id in Customers
+ON o.customerId = c.id
+
+-- Filter to include only those rows where there is no corresponding order for a customer
+WHERE o.customerId IS NULL;
